@@ -3,6 +3,8 @@ Request-Promised
 
 A promised wrapper for request
 
+[![NPM](https://nodei.co/npm/request-promised.png)](https://nodei.co/npm/request-promised/)
+
 ##Installation
 
 Install this module locally with the following command:
