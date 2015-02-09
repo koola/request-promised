@@ -25,9 +25,9 @@ npm install --save-dev request-promised
 
 **Example:**
 ```javascript
-var api = require('request-promised');
+var request = require('request-promised');
 
-api.get("http://www.example.com").then(function(res) {
+request.get("http://www.example.com").then(function(res) {
     expect(res.statusCode).toBe(200);
 });
 ```
