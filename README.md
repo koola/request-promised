@@ -3,6 +3,9 @@ Request-Promised
 
 A promised wrapper for request
 
+[![Build Status](https://secure.travis-ci.org/koola/request-promised.svg)](http://travis-ci.org/koola/request-promised)
+[![npm version](https://badge.fury.io/js/request-promised.svg)](http://badge.fury.io/js/request-promised)
+
 [![NPM](https://nodei.co/npm/request-promised.png)](https://nodei.co/npm/request-promised/)
 
 ##Installation
