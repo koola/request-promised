@@ -1,12 +1,12 @@
 {
   "name": "request-promised",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A promised wrapper for request",
   "main": "index.js",
   "dependencies": {
     "q": "^1.1.2",
     "lodash": "^2.4.1",
-    "request": "^2.51.0"
+    "request": "2.51.0"
   },
   "devDependencies": {
     "http-status-codes": "^1.0.4",
