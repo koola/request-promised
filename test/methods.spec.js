@@ -1,93 +1,84 @@
-var api = require('../index.js'),
-    httpStatus = require('http-status-codes'),
-    express = require('express'),
-    app = express(),
-    server;
+const api = require('../index.js');
+const http = require('http-status-codes');
+const express = require('express');
 
-describe("Tests", function() {
+describe("Request-promised", () => {
 
-    beforeEach(function() {
+    let app = express();
+    let server;
+    let url = 'http://localhost:8080/';
+
+    beforeEach(() => {
         server = app.listen(8080);
 
-        app.all('/', function(req, res){
-            res.sendStatus(200);
+        app.all('/', (req, result) => {
+            result.sendStatus(http.OK);
         });
 
-        app.get('/test', function (req, res) {
-            res.status(200).send({"foo": "bar"});
-        });
-    });
-
-    afterEach(function() {
-        server.close();
-    });
-
-    describe("HTTP methods work as expected", function() {
-
-        beforeEach(function() {
-            app.all('/', function(req, res){
-                res.sendStatus(200);
-            });
-        });
-
-        it(".get should work", function(done) {
-            api.get("http://localhost:8080/").then(function(res) {
-                expect(res.statusCode).toBe(httpStatus.OK);
-                done();
-            });
-        });
-
-        it(".patch should work", function(done) {
-            api.patch("http://localhost:8080/").then(function(res) {
-                expect(res.statusCode).toBe(httpStatus.OK);
-                done();
-            });
-        });
-
-        it(".post should work", function(done) {
-            api.post("http://localhost:8080/").then(function(res) {
-                expect(res.statusCode).toBe(httpStatus.OK);
-                done();
-            });
-        });
-
-        it(".put should work", function(done) {
-            api.put("http://localhost:8080/").then(function(res) {
-                expect(res.statusCode).toBe(httpStatus.OK);
-                done();
-            });
-        });
-
-        it(".head should work", function(done) {
-            api.head("http://localhost:8080/").then(function(res) {
-                expect(res.statusCode).toBe(httpStatus.OK);
-                done();
-            });
-        });
-
-        it(".delete should work", function(done) {
-            api.del("http://localhost:8080/").then(function(res) {
-                expect(res.statusCode).toBe(httpStatus.OK);
-                done();
-            });
+        app.get('/json', (req, result) => {
+            result.status(http.OK).send({"foo": "bar"});
         });
     });
 
-    describe("HTTP method options", function() {
+    afterEach(() => server.close());
 
-        beforeEach(function() {
-            app.get('/test', function (req, res) {
-                res.status(200).send({"foo": "bar"});
+    describe("HTTP method", () => {
+
+        beforeEach(() => {
+            app.all('/', (req, result) => {
+                result.sendStatus(http.OK);
             });
         });
 
-        it("should get json response", function (done) {
-            api.get('http://localhost:8080/test', {json: true}).then(function (res) {
-                expect(res.statusCode).toBe(httpStatus.OK);
-                expect(res.headers['content-type']).toMatch(/json/);
-                expect(res.body.foo).toBe('bar');
+        it(".get should work", done => {
+            api.get(url).then(result => {
+                expect(result.statusCode).toBe(http.OK);
                 done();
-            }, function (err) {
+            });
+        });
+
+        it(".patch should work", done => {
+            api.patch(url).then(result => {
+                expect(result.statusCode).toBe(http.OK);
+                done();
+            });
+        });
+
+        it(".post should work", done => {
+            api.post(url).then(result => {
+                expect(result.statusCode).toBe(http.OK);
+                done();
+            });
+        });
+
+        it(".put should work", done => {
+            api.put(url).then(result => {
+                expect(result.statusCode).toBe(http.OK);
+                done();
+            });
+        });
+
+        it(".head should work", done => {
+            api.head(url).then(result => {
+                expect(result.statusCode).toBe(http.OK);
+                done();
+            });
+        });
+
+        it(".delete should work", done => {
+            api.del("http://localhost:8080/").then(result => {
+                expect(result.statusCode).toBe(http.OK);
+                done();
+            });
+        });
+
+        it("should return json response", done => {
+            api.get(url + 'json', {json: true}).then(result => {
+                expect(result.statusCode).toBe(http.OK);
+                expect(result.headers['content-type']).toMatch(/json/);
+                expect(result.body.foo).toBe('bar');
+                done();
+            }).catch(err => {
                 expect(err).toBeNull();
             });
         });
