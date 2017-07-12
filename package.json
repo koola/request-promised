@@ -1,29 +1,26 @@
 {
   "name": "request-promised",
   "version": "1.0.1",
-  "description": "A promised wrapper for request",
+  "description": "Promised wrapper for request",
+  "author": "Koola",
+  "license": "MIT",
   "main": "index.js",
+  "scripts": {
+    "test": "node_modules/.bin/jasmine --config=./test/jasmine.json",
+    "release": "node_modules/.bin/standard-version"
+  },
   "dependencies": {
-    "q": "^1.1.2",
-    "lodash": "^2.4.1",
+    "lodash.partial": "4.2.1",
     "request": "2.51.0"
   },
   "devDependencies": {
-    "http-status-codes": "^1.0.4",
-    "express": "^4.11.1",
-    "jasmine-node": "^1.14.5"
-  },
-  "scripts": {
-    "test": "node_modules/.bin/jasmine-node test/*.spec.js"
+    "express": "4.11.1",
+    "http-status-codes": "1.0.4",
+    "jasmine": "2.6.0",
+    "standard-version": "^4.2.0"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/koola/request-promised.git"
-  },
-  "author": "Koola",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/koola/request-promised/issues"
-  },
-  "homepage": "https://github.com/koola/request-promised"
+  }
 }
