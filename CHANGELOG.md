@@ -1,6 +1,6 @@
-Changelog
-=========
+# Change Log
 
-v1.0.1 - Set request to fixed version (25/03/2015)
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-v1.0.0 - Initial release (01/01/2015)
+<a name="1.0.2"></a>
+## [1.0.2](https://github.com/koola/request-promised/compare/v1.0.1...v1.0.2) (2017-07-12)
