@@ -17,7 +17,7 @@
     "express": "4.11.1",
     "http-status-codes": "1.0.4",
     "jasmine": "2.6.0",
-    "standard-version": "^4.2.0"
+    "standard-version": "^8.0.1"
   },
   "repository": {
     "type": "git",
